@@ -1,0 +1,24 @@
+<header class="header">
+    <div class="navbar-container">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="MentalBalance" class="logo-img">
+                <a href="#" class="logo">Mental<span>Balance</span></a>
+            </div>
+            
+            <div class="nav-content">
+                <ul class="nav-links">
+                    <li><a href="#">Cerca de ti</a></li>
+                    <li><a href="#">Especialistas</a></li>
+                    <li><a href="#">Test mental</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <a href="{{ url_for('auth.login') }}" class="btn-login">Iniciar Sesión</a>
+                    <a href="#" class="btn-register">Regístrate</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
