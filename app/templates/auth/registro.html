@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro - MentalBalance</title>
+    <title>Registro</title>
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,7 +63,7 @@
                 </div>
                 
                 <div class="professional-option">
-                    <p>¿Eres profesional de la salud mental? <a href="#" class="professional-link">Registro para especialistas</a></p>
+                    <p>¿Eres profesional de la salud mental? <a href="{{ url_for('auth.registro_especialista') }}" class="professional-link">Registro para especialistas</a></p>
                 </div>
                 
                 <div class="terms-group">
