@@ -1,0 +1,337 @@
+:root {
+    /* Colores */
+    --primary-color: #14ae71;
+    --primary-dark: #0e8d5a;
+    --primary-light: #e0f7ed;
+    --primary-extra-light: #f0faf6;
+    
+    --secondary-color: #2d3748;
+    --secondary-light: #4a5568;
+    --secondary-extra-light: #f7fafc;
+    
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e2e8f0;
+    --dark-gray: #1a202c;
+    
+    --error-color: #e53e3e;
+    --success-color: #38a169;
+    
+    /* Tipografía */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Espaciado */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    
+    /* Bordes */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--light-gray);
+    color: var(--secondary-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-md);
+}
+
+/* Contenedor principal */
+.register-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+/* Tarjeta */
+.register-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-lg);
+    transition: transform 0.3s ease;
+}
+
+.register-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Encabezado */
+.card-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.card-header .logo {
+    height: 50px;
+    margin-bottom: var(--space-md);
+}
+
+.card-header h1 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--secondary-color);
+}
+
+.card-header p {
+    color: var(--secondary-light);
+    font-size: 0.95rem;
+}
+
+/* Formulario */
+.mental-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* Grupos de campos */
+.form-group {
+    position: relative;
+    padding-top: var(--space-xs);
+}
+
+/* Campos divididos */
+.name-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+/* Inputs */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid var(--medium-gray);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+}
+
+/* Labels */
+.form-group label {
+    position: absolute;
+    left: 0;
+    top: 16px;
+    color: var(--secondary-light);
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    transform-origin: left center;
+    background: linear-gradient(to bottom, var(--white) 50%, transparent 50%);
+    padding-right: 8px;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not([value=""]) + label {
+    top: 0;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    transform: scale(0.85);
+    padding-right: 4px;
+}
+
+/* Subrayado animado */
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus ~ .underline,
+.form-group select:focus ~ .underline {
+    width: 100%;
+}
+
+/* Select personalizado */
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 16px;
+}
+
+/* Checkbox */
+.terms-group {
+    display: flex;
+    align-items: center;
+    margin: var(--space-md) 0;
+}
+
+.terms-group input {
+    margin-right: var(--space-xs);
+    width: auto;
+}
+
+.terms-group label {
+    font-size: 0.85rem;
+    color: var(--secondary-light);
+    cursor: pointer;
+}
+
+.terms-group a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Botón */
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+}
+
+.register-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.register-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.register-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* Enlaces */
+.auth-links {
+    margin-top: var(--space-md);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--secondary-light);
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* Especial: Campos profesionales */
+.professional-badge {
+    background-color: var(--primary-extra-light);
+    border-left: 4px solid var(--primary-dark);
+    padding: var(--space-md);
+    margin: var(--space-lg) 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.professional-badge h3 {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-xs);
+}
+
+.professional-badge p {
+    font-size: 0.85rem;
+    color: var(--secondary-light);
+}
+
+.license-upload {
+    border: 2px dashed var(--medium-gray);
+    padding: var(--space-lg);
+    text-align: center;
+    border-radius: var(--radius-sm);
+    margin: var(--space-md) 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.license-upload:hover {
+    border-color: var(--primary-color);
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    margin-top: var(--space-xs);
+    transition: all 0.3s;
+}
+
+.upload-btn:hover {
+    background: var(--primary-extra-light);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .name-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .register-card {
+        padding: var(--space-md);
+    }
+}
+
+.hidden {
+    display: none;
+}

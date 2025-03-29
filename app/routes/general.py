@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, flash
 
 general_bp = Blueprint('general', __name__)
 

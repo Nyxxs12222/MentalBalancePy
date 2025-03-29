@@ -11,7 +11,20 @@
 </head>
 <body>
     {% include 'layouts/navbar.html' %}
-
+    
+    <!-- Mensajes Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">

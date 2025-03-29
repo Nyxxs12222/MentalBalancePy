@@ -5,6 +5,7 @@
     <title>Iniciar sesión - MentalBalance</title>
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
@@ -18,15 +19,35 @@
             
             <h2>Iniciar sesión</h2>
             
-            <form action="#" method="POST">
+            <!-- Mensajes Flash Mejorados -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash {{ category }}">
+                                {% if category == 'success' %}
+                                    <i class="fas fa-check-circle"></i>
+                                {% elif category in ['error', 'danger'] %}
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                {% else %}
+                                    <i class="fas fa-info-circle"></i>
+                                {% endif %}
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <form action="{{ url_for('auth.login') }}" method="POST">
                 <div class="form-group">
-                    <label for="username">Correo electrónico</label>
                     <input type="email" id="username" name="username" required>
+                    <label for="username">Correo electrónico</label>
                 </div>
                 
                 <div class="form-group">
-                    <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" required>
+                    <label for="password">Contraseña</label>
                 </div>
                 
                 <button type="submit" class="login-btn">Iniciar sesión</button>
@@ -40,7 +61,7 @@
             </a>
             
             <div class="auth-links">
-                <a href="#">¿No tienes cuenta? Regístrate</a>
+                <a href="{{ url_for('auth.registro') }}">¿No tienes cuenta? Regístrate</a>
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
         </div>
