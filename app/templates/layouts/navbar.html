@@ -3,7 +3,7 @@
         <nav class="navbar">
             <div class="logo-container">
                 <img src="{{ url_for('static', filename='img/logo.png') }}" alt="MentalBalance" class="logo-img">
-                <a href="#" class="logo">Mental<span>Balance</span></a>
+                <a href="{{ url_for('general.inicio') }}" class="logo">Mental<span>Balance</span></a>
             </div>
             
             <div class="nav-content">
@@ -15,8 +15,21 @@
                 </ul>
                 
                 <div class="nav-buttons">
-                    <a href="{{ url_for('auth.login') }}" class="btn-login">Iniciar Sesión</a>
-                    <a href="#" class="btn-register">Regístrate</a>
+                    {% if session.user_id %}
+                        <!-- Mostrar cuando el usuario está logueado -->
+                        <div class="user-menu">
+                            <a href="{{ url_for('auth.logout') }}" class="btn-logout">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                            </a>
+                            <a href="#" class="btn-profile">
+                                <i class="fas fa-user"></i> Mi perfil
+                            </a>
+                        </div>
+                    {% else %}
+                        <!-- Mostrar cuando no hay sesión (igual que antes) -->
+                        <a href="{{ url_for('auth.login') }}" class="btn-login">Iniciar Sesión</a>
+                        <a href="{{ url_for('auth.registro') }}" class="btn-register">Regístrate</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
